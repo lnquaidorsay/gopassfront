@@ -11,24 +11,54 @@
     </div>
 </div>
 <button mat-raised-button (click)="isEditable = !isEditable">
-    {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
-  </button>
+    {{!isEditable ? 'Activer le mode édition' : 'Desactiver le mode édition'}}
+</button>
 <mat-horizontal-stepper linear #stepper>
     <mat-step [stepControl]="identiteFormGroup" [editable]="isEditable">
       <form [formGroup]="identiteFormGroup">
-        <ng-template matStepLabel>Identite</ng-template>
+        <ng-template matStepLabel>Identite du voyageur</ng-template>
         <mat-grid-list cols="1" rowHeight="100px">
+        <mat-grid-tile>
+            <mat-form-field>
+                <mat-select formControlName="typeIdentite" placeholder="Type pièce identité*" >
+                    <ng-container >
+                      <mat-option value="C">Carte d'électeur</mat-option>
+                      <mat-option value="P">Passeport</mat-option>
+                    </ng-container>
+                  </mat-select>
+                  <mat-error>Type d'identité est obligatoire.</mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field>
+              <input matInput formControlName="numIdentite"  placeholder="Numero pièce identite" required>
+              <mat-error>numero d'identité est obligatoire.</mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+              <mat-form-field>
+                  <input matInput formControlName="dateDelivIdentite" [matDatepicker]="myDatepicker" placeholder="Date delivrance*" />
+                  <mat-datepicker-toggle matSuffix [for] = "myDatepicker" placeholder="mm/dd/yyyy"></mat-datepicker-toggle>
+                  <mat-datepicker #myDatepicker></mat-datepicker>
+                  <mat-error>Le date est obligatoire.</mat-error>
+              </mat-form-field>
+          </mat-grid-tile>
           <mat-grid-tile>
             <mat-form-field>
-              <mat-label>Nom</mat-label>
-              <input matInput formControlName="nom" placeholder="Nom voyageur" required>
-              <mat-error>Le nom est obligatoire.</mat-error>
+                <mat-select formControlName="organeDelivIdentite" placeholder="Organisme ayant délivré la pièce d’identité*" >
+                    <ng-container >
+                      <mat-option value="C">Commune</mat-option>
+                      <mat-option value="P">Hôtel de ville</mat-option>
+                    </ng-container>
+                </mat-select>
+                  <mat-error>L' organisme est obligatoire.</mat-error>
             </mat-form-field>
           </mat-grid-tile>
           <mat-grid-tile>
             <mat-form-field>
-              <input matInput formControlName="numIdentite"  placeholder="Numero identite*" >
-              <mat-error>Le numero d'identité est obligatoire.</mat-error>
+              <mat-label>Nom</mat-label>
+              <input matInput formControlName="nom" placeholder="Nom voyageur*" required>
+              <mat-error>Le nom est obligatoire.</mat-error>
             </mat-form-field>
           </mat-grid-tile>
           <mat-grid-tile>
@@ -45,88 +75,141 @@
           </mat-grid-tile>
         </mat-grid-list>
         <div>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button matStepperNext>Suivant</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="adresseFormGroup" [editable]="isEditable">
+      <form [formGroup]="adresseFormGroup">
+        <ng-template matStepLabel>Adresse du voyageur</ng-template>
+        <mat-grid-list cols="1" rowHeight="100px">
+          <mat-grid-tile>
+            <mat-form-field>
+              <mat-label>Lieu de naissance</mat-label>
+              <input matInput formControlName="lieunaiss" placeholder="Lieu de naissance*" required>
+              <mat-error>Lieu de naissance est obligatoire.</mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+                <input matInput formControlName="datenaiss" [matDatepicker]="myDatenaiss" placeholder="Date de naissance*" />
+                <mat-datepicker-toggle matSuffix [for] = "myDatenaiss" placeholder="mm/dd/yyyy"></mat-datepicker-toggle>
+                <mat-datepicker #myDatenaiss></mat-datepicker>
+                <mat-error>Le date est obligatoire.</mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <mat-label>Adresse de residence</mat-label>
+              <input matInput formControlName="adresse"  placeholder="Adresse de residence*" >
+              <mat-error>Adresse est obligatoire.</mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <input matInput formControlName="commune"  placeholder="Commune de résidence*" >
+              <mat-error>Commune est obligatoire.</mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <input matInput formControlName="ville"  placeholder="Ville de résidence*" >
+              <mat-error>ville est obligatoire.</mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <input matInput formControlName="email"  placeholder="Email*" >
+              <mat-error>Email est obligatoire.</mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <input matInput formControlName="tel"  placeholder="Téléphone*" >
+              <mat-error>Téléphone est obligatoire.</mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <div>
+          <button mat-button matStepperPrevious>Retour</button>
+          <button mat-button matStepperNext>Suivant</button>
         </div>
       </form>
     </mat-step>
     <mat-step [stepControl]="voyageFormGroup" [editable]="isEditable">
       <form [formGroup]="voyageFormGroup">
-        <ng-template matStepLabel>Adresse</ng-template>
+        <ng-template matStepLabel>Information du vol</ng-template>
         <mat-grid-list cols="1" rowHeight="100px">
-          <mat-grid-tile>
-            <mat-form-field>
-              <mat-label>Titre</mat-label>
-              <input matInput formControlName="titre2" placeholder="titre*" required>
-              <mat-error>Le titre est obligatoire.</mat-error>
-            </mat-form-field>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <mat-form-field>
-              <input matInput formControlName="aute2"  placeholder="auteur*" >
-              <mat-error>auteur est obligatoire.</mat-error>
-            </mat-form-field>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <mat-form-field>
-              <input matInput formControlName="numb2"  placeholder="nombre*" >
-              <mat-error>nombre est obligatoire.</mat-error>
-            </mat-form-field>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <mat-form-field>
-              <input matInput formControlName="prc2"  placeholder="Parc*" >
-              <mat-error>parc est obligatoire.</mat-error>
-            </mat-form-field>
-          </mat-grid-tile>
-        </mat-grid-list>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="AdresseFormGroup" [editable]="isEditable">
-      <form [formGroup]="AdresseFormGroup">
-        <ng-template matStepLabel>Lieu</ng-template>
-        <mat-grid-list cols="1" rowHeight="100px">
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-select formControlName="typevol" placeholder="Type de vol*" >
+                        <ng-container >
+                          <mat-option value="N">National</mat-option>
+                          <mat-option value="I">International</mat-option>
+                        </ng-container>
+                      </mat-select>
+                      <mat-error>Type de vol est obligatoire.</mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
           <mat-grid-tile>
             <mat-form-field>
               <mat-label>Lieu</mat-label>
-              <input matInput formControlName="lieu1" placeholder="lieu*" required>
-              <mat-error>Lieu est obligatoire.</mat-error>
+              <input matInput formControlName="compagnie" placeholder="Compagnie aérienne*" required>
+              <mat-error>CompagnieLieu est obligatoire.</mat-error>
             </mat-form-field>
           </mat-grid-tile>
           <mat-grid-tile>
             <mat-form-field>
-              <input matInput formControlName="aute1"  placeholder="auteur*" >
-              <mat-error>auteur est obligatoire.</mat-error>
+              <mat-label>Lieu</mat-label>
+              <input matInput formControlName="numvol" placeholder="Compagnie aérienne*" required>
+              <mat-error>Compagnie est obligatoire.</mat-error>
             </mat-form-field>
           </mat-grid-tile>
           <mat-grid-tile>
             <mat-form-field>
-              <input matInput formControlName="numb1"  placeholder="nombre*" >
-              <mat-error>nombre est obligatoire.</mat-error>
+                <input matInput formControlName="datevol" [matDatepicker]="myDatevol" placeholder="Date de naissance*" />
+                <mat-datepicker-toggle matSuffix [for] = "myDatevol" placeholder="mm/dd/yyyy"></mat-datepicker-toggle>
+                <mat-datepicker #myDatevol></mat-datepicker>
+                <mat-error>Le date est obligatoire.</mat-error>
+            </mat-form-field>
+         </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <input matInput formControlName="paysdest"  placeholder="Pays de destination*" >
+              <mat-error>Pays destination est obligatoire.</mat-error>
             </mat-form-field>
           </mat-grid-tile>
           <mat-grid-tile>
             <mat-form-field>
-              <input matInput formControlName="prc1"  placeholder="Parc*" >
-              <mat-error>parc est obligatoire.</mat-error>
+              <input matInput formControlName="villedest"  placeholder="Ville de destination*" >
+              <mat-error>Ville destination est obligatoire.</mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <input matInput formControlName="paystrans"  placeholder="Pays de transit*" >
+              <mat-error>Pays de transit est obligatoire.</mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <input matInput formControlName="villetrans"  placeholder="Ville de transit*" >
+              <mat-error>Ville de transit est obligatoire.</mat-error>
             </mat-form-field>
           </mat-grid-tile>
         </mat-grid-list>
         <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button matStepperPrevious>Retour</button>
+          <button mat-button matStepperNext>Suivant</button>
         </div>
       </form>
     </mat-step>
     <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
+      <ng-template matStepLabel>Finalisation</ng-template>
+      <p>Vous avez fini, valider.</p>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button matStepperPrevious>Retour</button>
+        <button mat-button (click)="stepper.reset()">Reinitialiser</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>
