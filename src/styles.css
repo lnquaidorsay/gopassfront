@@ -4,6 +4,13 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
+/************/
+.mat-grid-tile .mat-figure {
+    justify-content: left !important;
+  }
+/***********/
+
+
 /*************************Specific style**********************************/
 
 h1, h2, h3, h4, h5, h6 { color: #333333; font-family: 'Open Sans', sans-serif; margin: 0px 0px 10px 0px; font-weight: 600; }
