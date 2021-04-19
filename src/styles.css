@@ -3,6 +3,16 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.sticky{
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    z-index: 10;
+  }
+
+  .content{
+    height: 200vh;
+  }
 
 /************/
 .mat-grid-tile .mat-figure {

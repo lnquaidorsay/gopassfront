@@ -23,7 +23,7 @@
   </div>
   <div class="header-wrapper">
       <div class="header">
-          <div class="container">
+          <div class="container" >
               <div class="row">
                   <div class="col-lg-4 col-md-2 col-sm-12 col-xs-12">
                       <a [routerLink]="['/accueil']"><img src="../../assets/images/logopass.png" alt="GoPass"></a>
@@ -32,16 +32,16 @@
                       <div class="navigation">
                           <div id="navigation">
                               <ul>
-                                  <li class="active"><a [routerLink]="['/accueil']" >Accueil</a></li>
-                                  <li><a  routerLink ="apropos" >A propos de nous</a> </li>
+                                  <li class="active"><a [routerLink]="['/accueil']" fragment="accueil" (click)="scrollToElement(target)">Accueil</a></li>
+                                  <li><a  routerLink ="apropos" fragment="apropos" (click)="scrollToElement(target)">A propos de vous</a> </li>
                                   <li class="has-sub"><a [routerLink]="" >Payer</a>
                                       <ul>
-                                          <li><a [routerLink]="['/payer/nat']" >Vol national</a></li>
-                                          <li><a [routerLink]="['/payer/int']" >Vol international</a></li>
+                                          <li><a [routerLink]="['/payer/nat']" (click)="scrollToElement(target)">Vol national</a></li>
+                                          <li><a [routerLink]="['/payer/int']" (click)="scrollToElement(target)">Vol international</a></li>
                                       </ul>
                                   </li>
-                                  <li><a routerLink="temoin" >Temoignages</a>
-                                      <li><a routerLink="contact">Contact</a> </li>
+                                  <li><a routerLink="temoin" (click)="scrollToElement(target)">Temoignages</a>
+                                      <li><a routerLink="contact" (click)="scrollToElement(target)">Contact</a> </li>
                               </ul>
                           </div>
                       </div>
@@ -64,7 +64,7 @@
       </div>
   </div>
 
-  <div class="space-medium">
+  <div class="space-medium" #target>
     <!-- <div class="container"> -->
       <router-outlet></router-outlet>
     <!-- </div> -->
@@ -78,7 +78,7 @@
                   <div class="footer-widget">
                       <h3 class="footer-title ">A propos de nous</h3>
                       <p>L'application GoPassOnline vous facilite la tâche en achetant en ligne votre Gopass et eviter la file d'attente à l'aéroport!</p>
-                      <a href="#" class="footer-link">En savoir plus sur nous </a></div>
+                      <a [routerLink]="['/accueil']" class="footer-link">En savoir plus sur nous </a></div>
               </div>
               <!-- footer-about-close -->
               <!-- footer-location-start -->
