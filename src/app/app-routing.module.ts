@@ -7,6 +7,7 @@ import { VoyagenatComponent } from './components/voyagenat/voyagenat.component';
 import { VoyageinternatComponent } from './components/voyageinternat/voyageinternat.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { TemoinComponent } from './components/temoin/temoin.component';
+import { CompteComponent } from './components/compte/compte.component';
 
 // const routes: Routes = [
 //   { path: 'accueil', component: WelcomeComponent,
@@ -48,7 +49,7 @@ const routes: Routes = [
     component: WelcomeComponent 
   },
   { 
-    path: 'apropos', 
+    path: 'saisiepaiement', 
     component: IdentiteComponent 
   },
   { 
@@ -58,6 +59,10 @@ const routes: Routes = [
   { 
     path: 'payer/int',
     component: VoyageinternatComponent 
+  },
+  { 
+    path: 'compte',
+    component: CompteComponent 
   },
   { 
     path: 'contact', 

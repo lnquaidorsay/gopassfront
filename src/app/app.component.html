@@ -32,13 +32,9 @@
                       <div class="navigation">
                           <div id="navigation">
                               <ul>
-                                  <li class="active"><a [routerLink]="['/accueil']" fragment="accueil" (click)="scrollToElement(target)">Accueil</a></li>
-                                  <li><a  routerLink ="apropos" fragment="apropos" (click)="scrollToElement(target)">A propos de vous</a> </li>
-                                  <li class="has-sub"><a [routerLink]="" >Payer</a>
-                                      <ul>
-                                          <li><a [routerLink]="['/payer/nat']" (click)="scrollToElement(target)">Vol national</a></li>
-                                          <li><a [routerLink]="['/payer/int']" (click)="scrollToElement(target)">Vol international</a></li>
-                                      </ul>
+                                  <li class="active"><a [routerLink]="['/accueil']"  (click)="scrollToElement(target)">Accueil</a></li>
+                                  <li><a  routerLink ="saisiepaiement"  (click)="scrollToElement(target)">Saisie-paiement</a> </li>
+                                  <li ><a [routerLink]="['/compte']" (click)="scrollToElement(target)">Compte</a>
                                   </li>
                                   <li><a routerLink="temoin" (click)="scrollToElement(target)">Temoignages</a>
                                       <li><a routerLink="contact" (click)="scrollToElement(target)">Contact</a> </li>
@@ -58,7 +54,7 @@
               <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
                   <div class="hero-section-caption pinside40">
                       <h1 class="hero-title">Achetez votre GoPass et voyager librement</h1>
-                      <a [routerLink]="['/payer/nat']" class="btn btn-primary ">j'achète</a> </div>
+                      <a [routerLink]="['saisiepaiement']" (click)="scrollToElement(target)" class="btn btn-primary ">Saisie-paiement</a> </div>
               </div>
           </div>
       </div>

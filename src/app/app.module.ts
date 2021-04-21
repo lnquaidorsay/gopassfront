@@ -16,6 +16,8 @@ import { TemoinComponent } from './components/temoin/temoin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { CompteComponent } from './components/compte/compte.component';
+import { MomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { ToastrModule } from 'ngx-toastr';
     ContactComponent,
     IdentiteComponent,
     PagenotfoundComponent,
-    TemoinComponent
+    TemoinComponent,
+    CompteComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { ToastrModule } from 'ngx-toastr';
     AppMaterialModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
-    AppStickyModule
+    AppStickyModule,
+    MomentDateModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
