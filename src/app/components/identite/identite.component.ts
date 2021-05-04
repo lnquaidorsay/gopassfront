@@ -30,6 +30,8 @@ export class IdentiteComponent implements OnInit {
   saisiePaiement:FormGroup;
   selectedVol:string = '';
   selectedPrix:string = '';
+  pselectedVol:string = '';
+  pselectedPrix:string = '';
   isEditable = false;
   countries:Array<any> = [];
 
@@ -42,9 +44,22 @@ export class IdentiteComponent implements OnInit {
   if(this.selectedVol == 'vol national') {
     this.selectedPrix = '15';
   } else {
-    this.selectedPrix = '45';
+    this.selectedPrix = '50';
   }
   }
+
+
+  volTypeHandler(event: any) {
+    //update the ui
+    this.pselectedVol = this.voyageFormGroup.controls.typevol.value == 'N' ? 'vol national': 'vol international';
+    if(this.voyageFormGroup.controls.typevol.value == 'N') {
+      this.pselectedPrix = '15';
+    } else {
+      this.pselectedPrix = '50';
+    }
+    console.log('vol selectionné : '+this.pselectedVol);
+    console.log('prix à payer pour ce vol : '+this.pselectedVol);
+    }
 
   constructor(private _formBuilder: FormBuilder) {}
 
@@ -76,10 +91,14 @@ export class IdentiteComponent implements OnInit {
       adresse: [''],
       commune: [''],
       ville: [''],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       tel: ['', Validators.required]
       
     });
+    console.log('voyage form group : ',this.voyageFormGroup.controls);
+    console.log('typevol value : '+this.voyageFormGroup.controls.typevol.value);
+    console.log('vol selectionné : '+this.pselectedVol);
+    console.log('prix à payer pour ce vol : '+this.pselectedVol);
     this.saisiePaiement = this._formBuilder.group({
       email: ['', Validators.required],
       tel: ['', Validators.required]
@@ -841,11 +860,11 @@ export class IdentiteComponent implements OnInit {
   }
 
   form1(){
-    console.log(this.identiteFormGroup.value);
+    console.log('Identite : ',this.identiteFormGroup.value);
   }
 
   form2(){
-    console.log(this.adresseFormGroup.value);
+    console.log('adresse : ',this.adresseFormGroup.value);
   }
 
 }

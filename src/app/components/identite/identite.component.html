@@ -132,7 +132,7 @@
         <mat-grid-list cols="1" rowHeight="100px">
             <mat-grid-tile>
                 <mat-form-field>
-                    <mat-select formControlName="typevol" placeholder="Type de vol*" >
+                    <mat-select formControlName="typevol" placeholder="Type de vol*"  (selectionChange)="volTypeHandler($event)">
                         <ng-container >
                           <mat-option value="N">National</mat-option>
                           <mat-option value="I">International</mat-option>
@@ -212,14 +212,13 @@
     <mat-step [stepControl]="saisiePaiement" [editable]="isEditable">
       <form [formGroup]="saisiePaiement">
         <ng-template matStepLabel>Information sur le voyage</ng-template>
-        <article>
+        <!-- <article>
           <h2><span>Sélectionnez un type de vol :</span></h2>
           <div *ngFor="let vol of vols">
           <input type="radio" name="typevol"  value="{{vol}}" (change)="volChangedHandler($event)">{{vol}}
           </div>
-          <!-- <p><span>{{selectedVol != ''  ? 'Vous avez sélectionné le ' : ''}}</span><b>{{selectedVol != ''  ? selectedVol : ''}}</b></p> -->
-          </article>
-        <p>{{selectedVol != ''  ? 'Le montant de Gopass pour le ' : ''}} {{selectedVol != ''  ? selectedVol + ' est de ': ''}}{{selectedPrix != ''  ? selectedPrix  : ''}}{{selectedPrix != ''  ? '$' : ''}}</p>
+          </article> -->
+        <p>{{pselectedVol != ''  ? 'Le montant de Gopass pour le ' : ''}} {{pselectedVol != ''  ? pselectedVol + ' est de ': ''}}{{pselectedPrix != ''  ? pselectedPrix  : ''}}{{pselectedPrix != ''  ? '$' : ''}}</p>
         <article class="card">
           <div class="card-body p-5">
           
@@ -227,9 +226,9 @@
             <li class="nav-item">
               <a class="nav-link active" data-toggle="pill" href="#nav-tab-card">
               <i class="fa fa-credit-card"></i> Carte de credit </a></li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" data-toggle="pill" href="#nav-tab-paypal">
-              <i class="fa fa-paypal"></i>  Paypal</a></li>
+              <i class="fa fa-paypal"></i>  Paypal</a></li> -->
             <li class="nav-item">
               <a class="nav-link" data-toggle="pill" href="#nav-tab-bank">
                       <i class="fa fa-mobile" ></i>&nbsp;<i class="fa fa-money"></i>  Mobile money</a></li>
@@ -274,23 +273,23 @@
                     </div> <!-- form-group.// -->
                 </div>
             </div> <!-- row.// -->
-            <p><strong>Note:</strong> un email de Le PDF du reçu de paiement vous sera envoyé par
-              mail et le numéro du reçu pas SMS. </p>
+            <!-- <p><strong>Note:</strong> un email de Le PDF du reçu de paiement vous sera envoyé par
+              mail et le numéro du reçu pas SMS. </p> -->
             <button class="subscribe btn btn-primary btn-block" type="button"> Confirmez  </button>
             </form>
           </div> <!-- tab-pane.// -->
-          <div class="tab-pane fade" id="nav-tab-paypal">
+          <!-- <div class="tab-pane fade" id="nav-tab-paypal">
           <p>Paypal est le moyen le plus simple de payer en ligne</p>
           <p>
           <button type="button" class="btn btn-primary"> <i class="fa fa-paypal"></i> Connectez-vous </button>
           </p>
           <p><strong>Note:</strong> un email de Le PDF du reçu de paiement vous sera envoyé par
             mail et le numéro du reçu pas SMS. </p>
-          </div>
+          </div> -->
           <div class="tab-pane fade" id="nav-tab-bank">
           <p>Detail de votre transaction</p>
           <dl class="param">
-            <dt>Type de mobile money (M-pesa ou Orange money ou Airtel money): </dt>
+            <dt>Type de mobile money  </dt>
             <dd> <div class="form-group">
               <!-- <label for="exampleFormControlSelect1">Example select</label> -->
               <select class="form-control">
@@ -301,19 +300,15 @@
             </div></dd>
           </dl>
           <dl class="param">
-            <dt>Numéro de téléphone: </dt>
+            <dt>Numéro de téléphone </dt>
             <dd> <input type="number" class="form-control" required=""></dd>
           </dl>
           <dl class="param">
-            <dt>Code secret: </dt>
+            <dt>Code secret </dt>
             <dd> <input type="number" class="form-control" required=""></dd>
           </dl>
-          <dl class="param">
-              <dt>Montant USD: </dt>
-              <dd> <input type="number" class="form-control" required=""></dd>
-            </dl>
-          <p><strong>Note:</strong> un email de Le PDF du reçu de paiement vous sera envoyé par
-            mail et le numéro du reçu pas SMS. </p>
+          <!-- <p><strong>Note:</strong> un email de Le PDF du reçu de paiement vous sera envoyé par
+            mail et le numéro du reçu pas SMS. </p> -->
           </div> <!-- tab-pane.// -->
           </div> <!-- tab-content .// -->
           
@@ -321,9 +316,9 @@
           </article> <!-- card.// -->
         <div>
           <button mat-button matStepperPrevious>Retour</button>
-          <button mat-button matStepperNext>Suivant</button>
+          <!-- <button mat-button matStepperNext>Suivant</button> -->
           <button mat-button >Payer</button>
-          <button mat-button >Annuler</button>
+          <!-- <button mat-button >Annuler</button> -->
         </div>
       </form>
     </mat-step>

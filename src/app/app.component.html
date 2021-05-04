@@ -37,7 +37,21 @@
                                   <li ><a [routerLink]="['/compte']" (click)="scrollToElement(target)">Compte</a>
                                   </li>
                                   <li><a routerLink="temoin" (click)="scrollToElement(target)">Temoignages</a>
-                                      <li><a routerLink="contact" (click)="scrollToElement(target)">Contact</a> </li>
+                                  <li><a routerLink="contact" (click)="scrollToElement(target)">Contact</a> </li>
+                                  <li>
+                                    <!-- <mat-form-field>
+                                        <mat-select [(value)]="selected" placeholder="Langue">
+                                          <mat-option value="french">French</mat-option>
+                                          <mat-option value="english">English</mat-option>
+                                          <mat-option value="lingala">Lingala</mat-option>
+                                        </mat-select>
+                                      </mat-form-field> -->
+                                      <select style="margin-top: 11px;">
+                                          <option value="french">Français</option>
+                                          <option value="english">Anglais</option>
+                                          <option value="lingala">Lingala</option>
+                                        </select>
+                                </li>
                               </ul>
                           </div>
                       </div>

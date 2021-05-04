@@ -11,6 +11,7 @@ export class AppComponent {
   sticky: boolean = false;
   elementPosition: any;
   title = 'gopassfront';
+  selected = 'french';
 
   // ngAfterViewInit(){
   //   this.elementPosition = this.menuElement.nativeElement.offsetTop;
