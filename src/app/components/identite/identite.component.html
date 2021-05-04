@@ -211,7 +211,7 @@
     </mat-step>
     <mat-step [stepControl]="saisiePaiement" [editable]="isEditable">
       <form [formGroup]="saisiePaiement">
-        <ng-template matStepLabel>Information sur le voyage</ng-template>
+        <ng-template matStepLabel>Information sur le paiement</ng-template>
         <!-- <article>
           <h2><span>Sélectionnez un type de vol :</span></h2>
           <div *ngFor="let vol of vols">
@@ -317,7 +317,8 @@
         <div>
           <button mat-button matStepperPrevious>Retour</button>
           <!-- <button mat-button matStepperNext>Suivant</button> -->
-          <button mat-button >Payer</button>
+          <!-- <button mat-button >Payer</button> -->
+          <button mat-button >Confirmer</button>
           <!-- <button mat-button >Annuler</button> -->
         </div>
       </form>
